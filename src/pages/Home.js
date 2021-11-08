@@ -51,6 +51,7 @@ function Home() {
         title='Accessories'
         backgroundImg='accessories.jpg'
         leftBtnText='Shop now'
+        noChevronDown
       />
     </Container>
   );

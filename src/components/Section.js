@@ -2,7 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal';
 
-function Section({ title, desc, backgroundImg, leftBtnText, rightBtnText }) {
+function Section({
+  title,
+  desc,
+  backgroundImg,
+  leftBtnText,
+  rightBtnText,
+  noChevronDown,
+}) {
   return (
     <Wrapper bgImage={backgroundImg}>
       <Fade bottom>
@@ -11,17 +18,17 @@ function Section({ title, desc, backgroundImg, leftBtnText, rightBtnText }) {
           {desc && <ItemTextGroupDesc>{desc}</ItemTextGroupDesc>}
         </ItemTextGroup>
       </Fade>
-      <Buttons>
-        <Fade bottom>
+      <Fade bottom>
+        <Buttons>
           <ButtonGroup>
             <ButtonGroupLeftButton>{leftBtnText}</ButtonGroupLeftButton>
             {rightBtnText && (
               <ButtonGroupRightButton>{rightBtnText}</ButtonGroupRightButton>
             )}
           </ButtonGroup>
-        </Fade>
-        <DownArrow src='/images/down-arrow.svg' />
-      </Buttons>
+          {!noChevronDown && <DownArrow src='/images/down-arrow.svg' />}
+        </Buttons>
+      </Fade>
     </Wrapper>
   );
 }
@@ -54,7 +61,12 @@ const ItemTextGroupDesc = styled.p`
   font-size: 1rem;
 `;
 
-const Buttons = styled.div``;
+const Buttons = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: centers;
+`;
 
 const ButtonGroup = styled.div`
   display: flex;
