@@ -1,16 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import MenuIcon from '@material-ui/icons/Menu';
+import { Menu, Close } from '@material-ui/icons';
 
 function Header() {
-  /* header 
-      1. Logo
-      2. Car links (to go to certain area on page)
-      3. additional links
-        1) shop
-        2) account
-        3) hamburger
-    */
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
   return (
     <Container>
@@ -28,15 +21,59 @@ function Header() {
       <SideMenu>
         <a href='#'>Shop</a>
         <a href='#'>Account</a>
-        <Hamburger />
+        <Hamburger onClick={() => setIsBurgerMenuOpen(true)} />
       </SideMenu>
+      <BurgerNav show={isBurgerMenuOpen}>
+        <CustomCloseWrapper>
+          <CustomClose onClick={() => setIsBurgerMenuOpen(false)} />
+        </CustomCloseWrapper>
+        <li>
+          <a href=''>Existing Inventory</a>
+        </li>
+        <li>
+          <a href=''>Used Inventory</a>
+        </li>
+        <li>
+          <a href=''>Test Drive</a>
+        </li>
+        <li>
+          <a href=''>Cybertruck</a>
+        </li>
+        <li>
+          <a href=''>Roadster</a>
+        </li>
+        <li>
+          <a href=''>Semi</a>
+        </li>
+        <li>
+          <a href=''>Charging</a>
+        </li>
+        <li>
+          <a href=''>Powerwall</a>
+        </li>
+        <li>
+          <a href=''>Commercial Energy</a>
+        </li>
+        <li>
+          <a href=''>Utilities</a>
+        </li>
+        <li>
+          <a href=''>Find Us</a>
+        </li>
+        <li>
+          <a href=''>Support</a>
+        </li>
+        <li>
+          <a href=''>Investor Relations</a>
+        </li>
+      </BurgerNav>
     </Container>
   );
 }
 
 export default Header;
 
-const Container = styled.nav`
+const Container = styled.header`
   min-height: 5rem;
   position: fixed;
   display: flex;
@@ -46,11 +83,12 @@ const Container = styled.nav`
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1;
 `;
 
 const Brand = styled.div``;
 
-const MainMenu = styled.div`
+const MainMenu = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,6 +117,41 @@ const SideMenu = styled.div`
   }
 `;
 
-const Hamburger = styled(MenuIcon)`
+const Hamburger = styled(Menu)`
   cursor: pointer;
+`;
+
+const CustomCloseWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const CustomClose = styled(Close)`
+  cursor: pointer;
+`;
+
+const BurgerNav = styled.nav`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  width: 300px;
+  z-index: 20;
+  list-style: none;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+
+  transform: ${(props) => (props.show ? 'translateX(0)' : 'translateX(100%)')};
+  transition: transform 0.2s ease-in-out;
+  li {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    a {
+      font-weight: 600;
+    }
+  }
 `;
