@@ -11,6 +11,8 @@ function Home() {
         backgroundImg='model-s.jpg'
         leftBtnText='custom order'
         rightBtnText='existing inventory'
+        id='model_S'
+        nextLink='model_Y'
       />
       <Section
         title='Model Y'
@@ -18,6 +20,8 @@ function Home() {
         backgroundImg='model-y.jpg'
         leftBtnText='custom order'
         rightBtnText='existing inventory'
+        id='model_Y'
+        nextLink='model_3'
       />
       <Section
         title='Model 3'
@@ -25,6 +29,8 @@ function Home() {
         backgroundImg='model-3.jpg'
         leftBtnText='custom order'
         rightBtnText='existing inventory'
+        id='model_3'
+        nextLink='model_X'
       />
       <Section
         title='Model X'
@@ -32,6 +38,8 @@ function Home() {
         backgroundImg='model-x.jpg'
         leftBtnText='Custom order'
         rightBtnText='existing inventory'
+        id='model_X'
+        nextLink='solar_panels'
       />
       <Section
         title='Solar Panels'
@@ -39,6 +47,8 @@ function Home() {
         backgroundImg='solar-panel.jpg'
         leftBtnText='Order now'
         rightBtnText='Learn more'
+        id='solar_panels'
+        nextLink='solar_roof'
       />
       <Section
         title='Solar Roof'
@@ -46,11 +56,14 @@ function Home() {
         backgroundImg='solar-roof.jpg'
         leftBtnText='Order now'
         rightBtnText='Learn more'
+        id='solar_roof'
+        nextLink='accessories'
       />
       <Section
         title='Accessories'
         backgroundImg='accessories.jpg'
         leftBtnText='Shop now'
+        id='accessories'
         noChevronDown
       />
     </Container>

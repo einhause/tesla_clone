@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Menu, Close } from '@material-ui/icons';
 import { selectCars } from '../features/car/carSlice';
 import { useSelector } from 'react-redux';
+import { HashLink as Link } from 'react-router-hash-link';
 
 function Header() {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
@@ -11,21 +12,24 @@ function Header() {
   return (
     <Container>
       <Brand>
-        <a href='#'>
+        <Link to='#top' smooth>
           <img src='/images/logo.svg' alt='Tesla' />
-        </a>
+        </Link>
       </Brand>
       <MainMenu>
         {cars &&
-          cars.map((car, index) => (
-            <a href='#' key={index}>
-              {car}
-            </a>
-          ))}
+          cars.map((car, index) => {
+            const path = `/#model_${car.charAt(car.length - 1)}`;
+            return (
+              <Link smooth to={path} key={index}>
+                {car}
+              </Link>
+            );
+          })}
       </MainMenu>
       <SideMenu>
-        <a href='#'>Shop</a>
-        <a href='#'>Account</a>
+        <Link to=''>Shop</Link>
+        <Link to=''>Account</Link>
         <Hamburger onClick={() => setIsBurgerMenuOpen(true)} />
       </SideMenu>
       <BurgerNav show={isBurgerMenuOpen}>
@@ -33,49 +37,54 @@ function Header() {
           <CustomClose onClick={() => setIsBurgerMenuOpen(false)} />
         </CustomCloseWrapper>
         {cars &&
-          cars.map((car, index) => (
-            <li key={index}>
-              <a href='#'>{car}</a>
-            </li>
-          ))}
+          cars.map((car, index) => {
+            const path = `/#model_${car.charAt(car.length - 1)}`;
+            return (
+              <li>
+                <Link smooth to={path} key={index}>
+                  {car}
+                </Link>
+              </li>
+            );
+          })}
         <li>
-          <a href=''>Existing Inventory</a>
+          <Link to=''>Existing Inventory</Link>
         </li>
         <li>
-          <a href=''>Used Inventory</a>
+          <Link to=''>Used Inventory</Link>
         </li>
         <li>
-          <a href=''>Test Drive</a>
+          <Link to=''>Test Drive</Link>
         </li>
         <li>
-          <a href=''>Cybertruck</a>
+          <Link to=''>Cybertruck</Link>
         </li>
         <li>
-          <a href=''>Roadster</a>
+          <Link to=''>Roadster</Link>
         </li>
         <li>
-          <a href=''>Semi</a>
+          <Link to=''>Semi</Link>
         </li>
         <li>
-          <a href=''>Charging</a>
+          <Link to=''>Charging</Link>
         </li>
         <li>
-          <a href=''>Powerwall</a>
+          <Link to=''>Powerwall</Link>
         </li>
         <li>
-          <a href=''>Commercial Energy</a>
+          <Link to=''>Commercial Energy</Link>
         </li>
         <li>
-          <a href=''>Utilities</a>
+          <Link to=''>Utilities</Link>
         </li>
         <li>
-          <a href=''>Find Us</a>
+          <Link to=''>Find Us</Link>
         </li>
         <li>
-          <a href=''>Support</a>
+          <Link to=''>Support</Link>
         </li>
         <li>
-          <a href=''>Investor Relations</a>
+          <Link to=''>Investor Relations</Link>
         </li>
       </BurgerNav>
     </Container>

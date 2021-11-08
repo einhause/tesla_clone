@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal';
+import { HashLink as Link } from 'react-router-hash-link';
 
 function Section({
   title,
@@ -9,9 +10,11 @@ function Section({
   leftBtnText,
   rightBtnText,
   noChevronDown,
+  id,
+  nextLink,
 }) {
   return (
-    <Wrapper bgImage={backgroundImg}>
+    <Wrapper bgImage={backgroundImg} id={id}>
       <Fade bottom>
         <ItemTextGroup>
           <ItemTextGroupHeader>{title}</ItemTextGroupHeader>
@@ -26,7 +29,11 @@ function Section({
               <ButtonGroupRightButton>{rightBtnText}</ButtonGroupRightButton>
             )}
           </ButtonGroup>
-          {!noChevronDown && <DownArrow src='/images/down-arrow.svg' />}
+          {!noChevronDown && (
+            <Link to={`#${nextLink}`} smooth>
+              <DownArrow src='/images/down-arrow.svg' />
+            </Link>
+          )}
         </Buttons>
       </Fade>
     </Wrapper>
@@ -65,7 +72,7 @@ const Buttons = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: centers;
+  align-items: center;
 `;
 
 const ButtonGroup = styled.div`
