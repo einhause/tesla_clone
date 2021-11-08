@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -13,7 +14,10 @@ function App() {
         2) account
         3) hamburger
     */}
-      <Header />
+      {/* <Header /> */}
+      <Home />
+      {/* Home page consists of... */}
+
       {/* car section - x4
       1) text component
       2) button components x2
