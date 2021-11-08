@@ -6,15 +6,7 @@ import Home from './pages/Home';
 function App() {
   return (
     <div className='App'>
-      {/* header 
-      1. Logo
-      2. Car links (to go to certain area on page)
-      3. additional links
-        1) shop
-        2) account
-        3) hamburger
-    */}
-      {/* <Header /> */}
+      <Header />
       <Home />
       {/* Home page consists of... */}
 
